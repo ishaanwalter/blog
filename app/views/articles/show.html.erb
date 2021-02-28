@@ -1,16 +1,30 @@
-<h1><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
-<% if user_signed_in? %>
-<p>
-  <%= link_to "Edit", edit_article_path(@article) , class: "btn btn-primary btn-sm"%>
+<div class = "container">
+	<div class = "row">
+		<div class="col">
 
-  <%= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-sm" %>
-</p>
-<%end%>
+			<div class=" text-secondary w-50 text-center" style="background-color: #F0FFFF;">
+				
+			<h1><%= @article.title %></h1>
 
- <%= render @article.comments %>
+			<p><%= @article.body %></p>
+			<% if user_signed_in? %>
+			<p>
+			  <%= link_to "Edit", edit_article_path(@article) , class: "btn btn-primary btn-sm"%>
 
-<%= render 'comments/form' %>
+			  <%= link_to "Destroy", article_path(@article),
+			                  method: :delete,
+			                  data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-sm" %>
+			</p>
+			<%end%>
+				<div class = "overflow-auto" style="height:380px; overflow-y: auto;">
+
+				 <%= render @article.comments %>
+				</div>
+			</div>
+		</div>
+		<div class = "col">
+			<%= render 'comments/form' %>
+		</div>
+	</div>
+</div>
